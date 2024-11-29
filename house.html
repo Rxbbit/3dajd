@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vista 3D de la Casa</title>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+    <canvas id="webgl"></canvas>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/loaders/OBJLoader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/loaders/MTLLoader.js"></script>
+    <script>
+        let scene, camera, renderer, controls;
+        let houseModel;
+
+        init();
+        animate();
+
+        function init() {
+            // Configuración básica de Three.js
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('webgl') });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
+
+            // Cargar el modelo de la casa desde GitHub
+            loadModel();
+
+            // Configuración de la cámara
+            camera.position.set(0, 5, 10);
+
+            // Añadir controles de órbita (girar la cámara)
+            controls = new THREE.OrbitControls(camera, renderer.domElement);
+        }
+
+        function loadModel() {
+            // Cargar los materiales del modelo (MTL)
+            let mtlLoader = new THREE.MTLLoader();
+            mtlLoader.load('https://raw.githubusercontent.com/Rxbbit/3dajd/refs/heads/main/models/proyecto%20grande.mtl?token=GHSAT0AAAAAAC3HADBCM3KKF54SVPD57RBMZ2KJ7UQ', function (materials) {
+                materials.preload();
+                let objLoader = new THREE.OBJLoader();
+                objLoader.setMaterials(materials);
+                objLoader.load('https://raw.githubusercontent.com/Rxbbit/3dajd/refs/heads/main/models/proyecto%20grande.obj?token=GHSAT0AAAAAAC3HADBCTH6E2JERCFMWBQK4Z2KKAKA', function (object) {
+                    houseModel = object;
+                    houseModel.rotation.x = 0.5; // Ajustar la rotación inicial
+                    houseModel.rotation.y = 0.5;
+                    scene.add(houseModel);
+                });
+            });
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            if (houseModel) {
+                houseModel.rotation.y += 0.001; // Girar lentamente el modelo
+            }
+            controls.update(); // Para los controles de la cámara
+            renderer.render(scene, camera);
+        }
+    </script>
+</body>
+</html>
