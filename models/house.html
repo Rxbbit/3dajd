@@ -44,11 +44,11 @@
         function loadModel() {
             // Cargar los materiales del modelo (MTL)
             let mtlLoader = new THREE.MTLLoader();
-            mtlLoader.load('https://raw.githubusercontent.com/TU_USUARIO/TU_REPOSITORIO/main/models/house.mtl', function (materials) {
+            mtlLoader.load('https://raw.githubusercontent.com/Rxbbit/3dajd/refs/heads/main/models/proyecto%20grande.mtl?token=GHSAT0AAAAAAC3HADBCM3KKF54SVPD57RBMZ2KJ7UQ', function (materials) {
                 materials.preload();
                 let objLoader = new THREE.OBJLoader();
                 objLoader.setMaterials(materials);
-                objLoader.load('https://raw.githubusercontent.com/TU_USUARIO/TU_REPOSITORIO/main/models/house.obj', function (object) {
+                objLoader.load('https://raw.githubusercontent.com/Rxbbit/3dajd/refs/heads/main/models/proyecto%20grande.obj?token=GHSAT0AAAAAAC3HADBCTH6E2JERCFMWBQK4Z2KKAKA', function (object) {
                     houseModel = object;
                     houseModel.rotation.x = 0.5; // Ajustar la rotación inicial
                     houseModel.rotation.y = 0.5;
