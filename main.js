@@ -16,8 +16,8 @@ scene.add(light);
 
 // Cargar los materiales (.mtl) usando MTLLoader
 const mtlLoader = new MTLLoader();
-const objPath = 'https://raw.githubusercontent.com/Rxbbit/3dajd/refs/heads/main/models/proyecto%20grande.obj';
-const mtlPath = 'https://raw.githubusercontent.com/Rxbbit/3dajd/refs/heads/main/models/proyecto%20grande.mtl';
+const objPath = 'https://raw.githubusercontent.com/Rxbbit/3dajd/main/models/proyecto%20grande.obj';
+const mtlPath = 'https://raw.githubusercontent.com/Rxbbit/3dajd/main/models/proyecto%20grande.mtl';
 
 mtlLoader.load(mtlPath, function (materials) {
     materials.preload();
