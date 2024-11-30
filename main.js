@@ -1,5 +1,5 @@
 // Importa Three.js y los cargadores necesarios
-import * as THREE from "../node_modules/three/build/three.module.js
+import * as THREE from '../https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.module.js';
 import { MTLLoader } from 'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/jsm/loaders/MTLLoader.js';
 import { OBJLoader } from 'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/jsm/loaders/OBJLoader.js';
 
