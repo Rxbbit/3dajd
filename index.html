@@ -29,13 +29,13 @@
 
     // Cargar el material con MTLLoader
     const mtlLoader = new THREE.MTLLoader();
-    const mtlPath = 'https://raw.githubusercontent.com/TU_USUARIO/TU_REPOSITORIO/main/models/house.mtl';
+    const mtlPath = 'https://raw.githubusercontent.com/Rxbbit/3dajd/refs/heads/main/models/proyecto%20grande.mtl';
     mtlLoader.load(mtlPath, function (materials) {
         materials.preload();
 
         // Cargar el modelo OBJ con OBJLoader
         const objLoader = new THREE.OBJLoader();
-        const objPath = 'https://raw.githubusercontent.com/TU_USUARIO/TU_REPOSITORIO/main/models/house.obj';
+        const objPath = 'https://raw.githubusercontent.com/Rxbbit/3dajd/refs/heads/main/models/proyecto%20grande.obj';
         objLoader.setMaterials(materials); // Asignar los materiales cargados
         objLoader.load(objPath, function (object) {
             scene.add(object);
